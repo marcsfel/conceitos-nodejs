@@ -76,11 +76,11 @@ app.delete("/repositories/:id",validateRepositoryId, (request, response) => {
 app.post("/repositories/:id/like",validateRepositoryId, (request, response) => {
   const { id } = request.params;
 
-  const repositoryIndex = repositories.findIndex(repository => repository.id === id);
+  const repository = repositories.find(repository => repository.id === id);
 
-  repositories[repositoryIndex].likes +=1;
+  repository.likes +=1;
   
-  response.json(repositories[repositoryIndex]);
+  response.json(repository);
   
 
 });
